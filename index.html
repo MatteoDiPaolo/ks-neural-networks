@@ -1,0 +1,976 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Neural Networks</title>
+
+    <meta name="description" content="Neural Networks" />
+    <meta name="author" content="Matteo Di Paolantonio" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="reveal/dist/reset.css" />
+    <link rel="stylesheet" href="reveal/dist/reveal.css" />
+    <link rel="stylesheet" href="reveal/dist/theme/black.css" id="theme" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="reveal/plugin/highlight/monokai.css" />
+
+    <style>
+      .primary-text {
+        color: #17ae8e;
+      }
+
+      .secondary-text {
+        color: #fe9f4d;
+      }
+
+      li {
+        color: #17ae8e;
+        margin-bottom: 1rem;
+      }
+
+      li span {
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section data-background="imgs/intro.png" data-background-opacity="0.8">
+          <h1>Neural Networks</h1>
+          <p>
+            <span class="primary-text">The brain behind AI</span>
+          </p>
+          <br />
+          <p style="text-align: right; padding-right: 20px">
+            <small>Matteo Di Paolantonio</small>
+            <br />
+          </p>
+          <aside class="notes">
+            Let's try to understand what a neural network is in a very simple
+            way. The aim is to create curiosity and interest in the topic so
+            that you can further explore it on your own.
+          </aside>
+        </section>
+
+        <section>
+          <section>
+            <h4>Definition</h4>
+            <figure>
+              <img
+                height="400"
+                src="imgs/nn-0.png"
+                data-preview-image
+                data-preview-fit="contain"
+              />
+            </figure>
+            <blockquote
+              style="font-size: 0.8em"
+              cite="https://en.wikipedia.org/wiki/Neural_network_(machine_learning)"
+            >
+              &ldquo;machine learning algorithm inspired by the structure and
+              function of the human brain.&rdquo;
+            </blockquote>
+            <aside class="notes">
+              What they are: Neural networks are computational models that mimic
+              the way the brain processes information. They are used in various
+              applications, including image recognition, natural language
+              processing, and predictive modeling.
+              <br />
+              Types: There are different types of neural networks, including
+              feedforward neural networks, convolutional neural networks, and
+              recurrent neural networks. Each type has its own specific
+              structure and is used for different tasks.
+              <br />
+              Feedforward —> A feedforward neural network is a general
+              architecture where information flows in one direction. A
+              Multilayer Perceptron (MLP) is a specific type of feedforward
+              network with a particular structure involving multiple layers.
+            </aside>
+          </section>
+          <section>
+            <h4>Structure</h4>
+            <figure>
+              <img
+                height="400"
+                src="imgs/nn-1.png"
+                data-preview-image
+                data-preview-fit="contain"
+              />
+            </figure>
+            <div
+              style="
+                display: flex;
+                justify-content: center;
+                gap: 2rem;
+                margin-top: 1rem;
+                font-size: 0.8em;
+              "
+            >
+              <div style="display: flex; align-items: center; gap: 0.5rem">
+                <div
+                  style="
+                    width: 12px;
+                    height: 12px;
+                    background-color: #fe9f4d;
+                    border-radius: 50%;
+                  "
+                ></div>
+                <span>Neurons</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.5rem">
+                <div
+                  style="
+                    width: 15px;
+                    height: 10px;
+                    border: 2px solid #fe9f4d;
+                    background-color: transparent;
+                  "
+                ></div>
+                <span>Layers</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 0.5rem">
+                <div
+                  style="width: 20px; height: 2px; background-color: #fe9f4d"
+                ></div>
+                <span>Weights</span>
+              </div>
+            </div>
+            <aside class="notes">
+              How they work: Neural networks are composed of interconnected
+              nodes (neurons) organized in layers. Each neuron receives input,
+              processes it, and transmits an output to other neurons. These
+              connections have associated weights, which represent the strength
+              of the connection. During training, the network adjusts these
+              weights to improve its performance. are composed of interconnected
+              nodes (neurons) organized in layers. Each neuron receives input,
+              processes it, and transmits an output to other neurons. These
+              connections have associated weights, which represent the strength
+              of the connection.
+              <br />
+              Having a brain is not enough, you need to train it. Imagine the
+              brain of a newborn baby. It's a blank slate, but it's not very
+              useful. It needs to learn from experience. Here comes the concept
+              of machine learning.
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h4>Neurons and layers</h4>
+            <div class="r-vstack">
+              <div class="r-hstack">
+                <figure class="fragment">
+                  <img
+                    height="200"
+                    src="imgs/six-hw-0.png"
+                    data-preview-image
+                    data-preview-fit="contain"
+                  />
+                </figure>
+                <figure class="fragment">
+                  <img
+                    height="200"
+                    src="imgs/six-hw-1.png"
+                    data-preview-image
+                    data-preview-fit="contain"
+                  />
+                </figure>
+                <figure class="fragment">
+                  <img
+                    height="200"
+                    src="imgs/six-hw-2.png"
+                    data-preview-image
+                    data-preview-fit="contain"
+                  />
+                </figure>
+              </div>
+              <div
+                style="
+                  width: 50vw;
+                  height: 1px;
+                  margin: 0 10rem;
+                  background-color: #17ae8e;
+                "
+              ></div>
+              <h1 class="fragment">6</h1>
+              <small class="fragment primary-text">
+                The white pattern activates some neurons in your brain.
+              </small>
+            </div>
+            <aside class="notes">
+              This is the number 6. Despite being poorly written and displayed
+              at a very low resolution, your brain easily recognizes it. Because
+              it can recognize the patterns of the greyscale, the white bits
+              activates some neurons in your brain.
+              <br />
+              Now imagine I ask you to write a program that takes an image of a
+              digit and returns a number between 0 and 9 representing the digit.
+              What seems trivial for a human becomes a surprisingly difficult
+              challenge for a computer.
+              <br />
+              This is where machine learning comes in.
+            </aside>
+          </section>
+          <section>
+            <h4>Defining the pattern</h4>
+            <figure>
+              <img
+                height="450"
+                src="imgs/six-hw-grid.png"
+                data-preview-image
+                data-preview-fit="contain"
+              />
+            </figure>
+            <p>28 x 28 = 784 pixels</p>
+            <aside class="notes">
+              Some of the pixels are white, some are black. We need to define
+              the pattern to identify pixels. We can do this by creating a
+              matrix of 784 elements, each element representing a pixel.
+            </aside>
+          </section>
+          <section>
+            <h4>Defining the pattern</h4>
+            <figure>
+              <img
+                height="450"
+                src="imgs/six-hw-values.png"
+                data-preview-image
+                data-preview-fit="contain"
+              />
+            </figure>
+            <p>784 greyscale values (0.0 - 1.0)</p>
+            <aside class="notes">
+              Each matrix element can be a value between 0 and 1, representing a
+              black or white pixel.
+            </aside>
+          </section>
+          <section>
+            <h4>Defining the pattern</h4>
+            <div class="r-hstack">
+              <figure style="margin-right: 4rem">
+                <img
+                  height="450"
+                  src="imgs/six-hw-values.png"
+                  data-preview-image
+                  data-preview-fit="contain"
+                />
+              </figure>
+              <div class="r-vstack">
+                <small>0</small>
+                <small>1</small>
+                <small>2</small>
+                <small>3</small>
+                <small>4</small>
+                <small>5</small>
+                <p class="primary-text">6</p>
+                <small>7</small>
+                <small>8</small>
+                <small>9</small>
+              </div>
+            </div>
+            <aside class="notes">
+              Each matrix element can be a value between 0 and 1, representing a
+              black or white pixel. Is there a way to infer that the number in
+              the image is a 6 from the values of the pixels?
+            </aside>
+          </section>
+          <section>
+            <h4>Feedforward</h4>
+            <small>Multilayer Perceptron</small>
+            <figure>
+              <img
+                height="450"
+                src="imgs/six-into-nn.png"
+                data-preview-image
+                data-preview-fit="contain"
+              />
+            </figure>
+            <aside class="notes">
+              What if we could setup a network so that it can take the image as
+              an input, and have its neurons activate based on the values of the
+              pixels? Every neuron on each layer will be activated up until the
+              last layer where only the neuron asociated with the 6 will be
+              activated
+            </aside>
+          </section>
+          <section>
+            <h4>Pattern as input</h4>
+            <figure>
+              <img
+                height="450"
+                src="imgs/six-hw-circles.png"
+                data-preview-image
+                data-preview-fit="contain"
+              />
+            </figure>
+            <small class="primary-text">784 neurons</small>
+            <aside class="notes">
+              Going back to the image, we can see that the image is composed of
+              neurons, each neuron is a circle and it holds a value.
+            </aside>
+          </section>
+          <section>
+            <h4>Pattern values as first layer</h4>
+            <figure>
+              <img
+                height="450"
+                src="imgs/six-into-nn-input.png"
+                data-preview-image
+                data-preview-fit="contain"
+              />
+            </figure>
+            <aside class="notes">
+              We can use the values of the matrix as input for the network. As
+              the first layer so that each neuron will hold the value of the
+              given pixel of the image
+            </aside>
+          </section>
+          <section>
+            <h4>Activation</h4>
+            <div class="r-hstack">
+              <figure>
+                <img
+                  height="450"
+                  src="imgs/six-hw-circles.png"
+                  data-preview-image
+                  data-preview-fit="contain"
+                />
+              </figure>
+              <div class="r-hstack" style="margin-left: 2rem">
+                <div
+                  style="
+                    width: 80px;
+                    height: 80px;
+                    border: 2px solid;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                  "
+                >
+                  0.4
+                </div>
+                <small class="primary-text" style="margin-left: 1rem">
+                  Activation value
+                </small>
+              </div>
+            </div>
+            <aside class="notes">
+              The activation value is threshold that determines if the neuron is
+              active according to the value of it.
+            </aside>
+          </section>
+          <section>
+            <h4>First and last layer</h4>
+            <div class="r-hstack">
+              <figure>
+                <img
+                  height="450"
+                  src="imgs/first-layer.png"
+                  data-preview-image
+                  data-preview-fit="contain"
+                />
+              </figure>
+
+              <div class="r-hstack" style="gap: 1rem; margin-left: 1rem">
+                <div
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    border: 2px solid;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    background-color: #17ae8e;
+                    font-size: 0.4em;
+                  "
+                >
+                  0.0
+                </div>
+                <small class="primary-text" style="font-size: 0.3em">
+                  Inactive
+                </small>
+                <div
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    border: 2px solid;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    background-color: #fe9f4d;
+                    font-size: 0.4em;
+                  "
+                >
+                  0.4
+                </div>
+                <small class="secondary-text" style="font-size: 0.3em">
+                  Active
+                </small>
+              </div>
+              <figure style="margin-left: 6rem">
+                <img
+                  height="450"
+                  src="imgs/last-layer.png"
+                  data-preview-image
+                  data-preview-fit="contain"
+                />
+              </figure>
+              <div class="r-hstack" style="gap: 1rem; margin-left: 0.5rem">
+                <div
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    border: 2px solid;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    background-color: #17ae8e;
+                    font-size: 0.4em;
+                  "
+                >
+                  0.0
+                </div>
+                <small class="primary-text" style="font-size: 0.3em">
+                  Inactive
+                </small>
+
+                <div
+                  style="
+                    width: 40px;
+                    height: 40px;
+                    border: 2px solid;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    color: white;
+                    background-color: #fe9f4d;
+                    font-size: 0.4em;
+                  "
+                >
+                  1.0
+                </div>
+                <small class="secondary-text" style="font-size: 0.3em">
+                  Really Active
+                </small>
+              </div>
+            </div>
+            <aside class="notes">
+              In a neural network, the activations in one layer directly
+              influence the activations in the next. At its core, the network
+              functions as an information processing system by determining how
+              these activations propagate forward. This process is loosely
+              inspired by biological neural networks, where the firing of some
+              neurons triggers activity in others.
+            </aside>
+          </section>
+          <section>
+            <h4>Sub-patterns</h4>
+            <div class="r-hstack">
+              <figure>
+                <img
+                  height="450"
+                  src="imgs/six-split-two.png"
+                  data-preview-image
+                  data-preview-fit="contain"
+                />
+              </figure>
+              <div
+                style="
+                  width: 1px;
+                  height: 10vh;
+                  margin: 0 3rem;
+                  background-color: #fe9f4d;
+                "
+              ></div>
+              <figure>
+                <img
+                  height="450"
+                  src="imgs/eight-split-two.png"
+                  data-preview-image
+                  data-preview-fit="contain"
+                />
+              </figure>
+            </div>
+            <small class="primary-text">Loops and lines</small>
+          </section>
+          <section>
+            <h4>Sub-patterns</h4>
+            <figure>
+              <img
+                height="450"
+                src="imgs/six-split-six.png"
+                data-preview-image
+                data-preview-fit="contain"
+              />
+            </figure>
+            <small class="primary-text">Fragments of loops and lines</small>
+          </section>
+          <section>
+            <h4>Middle layers</h4>
+            <figure>
+              <img
+                height="450"
+                src="imgs/six-into-nn-layers-split.png"
+                data-preview-image
+                data-preview-fit="contain"
+              />
+            </figure>
+          </section>
+          <section>
+            <h4>Recap</h4>
+            <div class="r-hstack">
+              <ul>
+                <li class="fragment">
+                  <small style="color: #fff">
+                    There are many type of neural networks and we are focusing
+                    on the simplest one: the Multilayer Perceptron (MLP).
+                  </small>
+                </li>
+                <li class="fragment">
+                  <small style="color: #fff">
+                    A neuron is a basic unit of a neural network. For the sake
+                    of simplicity let's say that it holds a value between 0.0
+                    and 1.0. The greater the value the more active is the
+                    neuron.
+                  </small>
+                </li>
+                <li class="fragment">
+                  <small style="color: #fff">
+                    Neurons are organized in layers. The first is the input
+                    layer, the last is the output layer, and the middle layers
+                    are the hidden layers.
+                  </small>
+                </li>
+                <li class="fragment">
+                  <small style="color: #fff">
+                    Neurons in a given layer are connected to the neurons in the
+                    previous layer. Activation values are propagated forward
+                    through the network.
+                  </small>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section>
+            <h4>Doubts or thoughts?</h4>
+            <figure>
+              <img height="300" src="imgs/homer.gif" data-preview-image />
+            </figure>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h4>Weights</h4>
+            <div class="r-hstack" style="gap: 2rem">
+              <figure>
+                <img height="450" src="imgs/weights-0.png" data-preview-image />
+              </figure>
+              <small class="primary-text"> Weights propagate activation </small>
+            </div>
+          </section>
+          <section>
+            <h4>Weights</h4>
+            <div class="r-hstack" style="gap: 4rem">
+              <figure>
+                <img height="450" src="imgs/weights-1.png" data-preview-image />
+              </figure>
+              <small style="text-align: left; display: block">
+                Activation
+                <br />
+                <span class="primary-text">0.0</span> &harr;
+                <span class="primary-text">1.0</span>
+                <br />
+                <br />
+                Weight
+                <br />
+                <span class="primary-text">-x</span> &harr;
+                <span class="primary-text">y</span>
+              </small>
+            </div>
+          </section>
+          <section>
+            <h4>Weights</h4>
+            <div class="r-hstack" style="gap: 4rem">
+              <figure>
+                <img height="450" src="imgs/weights-1.png" data-preview-image />
+              </figure>
+              <div
+                style="
+                  font-size: 0.5em;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: flex-start;
+                "
+              >
+                <span
+                  ><span class="primary-text">w<sub>1</sub></span> = 7.0</span
+                >
+                <span
+                  ><span class="primary-text">w<sub>2</sub> </span>= -4.6</span
+                >
+                <span
+                  ><span class="primary-text">w<sub>3</sub></span> = 5.8</span
+                >
+                <span
+                  ><span class="primary-text">w<sub>4</sub></span> = 7.3</span
+                >
+                <span
+                  ><span class="primary-text">w<sub>5</sub> </span>= -0.5</span
+                >
+                <span
+                  ><span class="primary-text">w<sub>6</sub> </span>= -3.2</span
+                >
+                <span style="margin-left: 2rem">.</span>
+                <span style="margin-left: 2rem">.</span>
+                <span style="margin-left: 2rem">.</span>
+                <span
+                  ><span class="primary-text">w<sub>784</sub></span> = 2.2</span
+                >
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>Activation</h4>
+            <div class="r-hstack" style="gap: 4rem">
+              <figure>
+                <img height="450" src="imgs/weights-1.png" data-preview-image />
+              </figure>
+              <div>
+                <span class="primary-text">w<sub>1</sub></span
+                >a<sub>1</sub> + <span class="primary-text">w<sub>2</sub></span
+                >a<sub>2</sub> + ... +
+                <span class="primary-text">w<sub>n</sub></span
+                >a<sub>n</sub>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>Activation</h4>
+            <div class="r-hstack" style="gap: 4rem">
+              <figure>
+                <img height="450" src="imgs/weights-1.png" data-preview-image />
+              </figure>
+              <div>
+                <span class="primary-text">w<sub>1</sub></span
+                >a<sub>1</sub> + <span class="primary-text">w<sub>2</sub></span
+                >a<sub>2</sub> + ... +
+                <span class="primary-text">w<sub>n</sub></span
+                >a<sub>n</sub>
+                </span>
+                <br>
+                <br>
+                <span style="font-size: 1.5em; color: #fe9f4d;">!</span>
+                <br>
+                <small
+                  style="
+                    border: 1px solid #fe9f4d;
+                    padding: 1rem;
+                    border-radius: 1rem;
+                  "
+                >
+                  Weight
+                  <br />
+                  <span class="primary-text">-x</span> &harr;
+                  <span class="primary-text">y</span>
+                </small>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>Sigmoid function</h4>
+            <div class="r-hstack" style="gap: 3rem">
+              <figure>
+                <img height="400" src="imgs/sigmoid.png" data-preview-image />
+              </figure>
+              <div>
+                σ(x) = 1 / (1 + e<sup>-x</sup>)
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>Activation</h4>
+            <div class="r-hstack" style="gap: 4rem">
+              <figure>
+                <img height="450" src="imgs/weights-1.png" data-preview-image />
+              </figure>
+              <div>
+                <span class="secondary-text">σ( </span><span class="primary-text">w<sub>1</sub></span
+                >a<sub>1</sub> + <span class="primary-text">w<sub>2</sub></span
+                  >a<sub>2</sub> + ... +
+                  <span class="primary-text">w<sub>n</sub></span
+                  >a<sub>n</sub>
+                <span class="secondary-text">)</span>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>Activation</h4>
+            <div class="r-hstack" style="gap: 4rem">
+              <figure>
+                <img height="450" src="imgs/weights-1.png" data-preview-image />
+              </figure>
+              <div>
+                <span class="secondary-text">σ( </span><span class="primary-text">w<sub>1</sub></span
+                >a<sub>1</sub> + <span class="primary-text">w<sub>2</sub></span
+                  >a<sub>2</sub> + ... +
+                  <span class="primary-text">w<sub>n</sub></span
+                  >a<sub>n</sub> + <span  style="color:deepskyblue;">b</span>
+                <span class="secondary-text">)</span>
+                <br>
+                <br>
+                <small
+                  style="
+                    border: 1px solid deepskyblue;
+                    color: deepskyblue;
+                    padding: 1rem;
+                    border-radius: 1rem;
+                  "
+                >
+                  Bias
+                </small>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>Some numbers</h4>
+            <div class="r-vstack" >
+              <figure>
+                <img height="300" src="imgs/weights-0.png" data-preview-image />
+              </figure>
+              <small style="text-align: left; display: block">
+                <ul>
+                  <li><span style="color: #fff;">4 layers</span></li>
+                  <li><span style="color: #fff;">784 + 16 + 16 + 10 = 826 neurons</span></li>
+                  <li><span style="color: #fff;">(784 x 16) + (16 x 16) + (16 x 10) = 12.960 weights</span></li>
+                </ul>
+              </small>
+            </div>
+          </section>
+          <section>
+            <h4>Activation</h4>
+            <div class="r-hstack" style="gap: 4rem">
+              <figure>
+                <img height="450" src="imgs/weights-1.png" data-preview-image />
+              </figure>
+              <div style="font-size: 0.65em;">
+                a<sub>0</sub><sup>(1)</sup> = <span class="secondary-text">σ( </span><span class="primary-text">w<sub>0.0</sub></span
+                >a<sub>0</sub><sup>(0)</sup> + <span class="primary-text">w<sub>0.1</sub></span
+                  >a<sub>1</sub><sup>(0)</sup> + ... +
+                  <span class="primary-text">w<sub>0.n</sub></span
+                  >a<sub>n</sub><sup>(0)</sup> + <span  style="color:deepskyblue;">b<sub>0</sub><sup>(1)</sup></span>
+                <span class="secondary-text">)</span>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>Layer Activation</h4>
+            <div class="r-hstack" style="gap: 4rem">
+              <figure>
+                <img height="450" src="imgs/weights-2.png" data-preview-image />
+              </figure>
+              <div style="font-family: monospace; font-size: 16px;">
+                <span class="secondary-text" style="font-size: 36px; margin-right: 10px;">σ</span>
+                <span class="secondary-text" style="font-size: 32px; line-height: 1.2;">(</span>
+            
+                <span style="display: inline-block; vertical-align: middle; position: relative;">
+                  <span style="position: absolute; top: 50%; transform: translateY(-50%) scaleX(0.3); font-size: 150px; left: -40px;">[</span>
+                  <table class="primary-text" style="display: inline-block; vertical-align: middle; border-collapse: collapse; margin: 0 20px;">
+                    <tr style="border: none;"><td style="border: none;">w<sub>0,0</sub></td><td style="border: none;">w<sub>0,1</sub></td><td style="border: none;">...</td><td style="border: none;">w<sub>0,n</sub></td></tr>
+                    <tr style="border: none;"><td style="border: none;">w<sub>1,0</sub></td><td style="border: none;">w<sub>1,1</sub></td><td style="border: none;">...</td><td style="border: none;">w<sub>1,n</sub></td></tr>
+                    <tr style="border: none;"><td style="border: none;">⋮</td><td style="border: none;">⋱</td><td style="border: none;">⋱</td><td style="border: none;">⋮</td></tr>
+                    <tr style="border: none;"><td style="border: none;">w<sub>k,0</sub></td><td style="border: none;">w<sub>k,1</sub></td><td style="border: none;">...</td><td style="border: none;">w<sub>k,n</sub></td></tr>
+                  </table>
+                  <span style="position: absolute; top: 50%; transform: translateY(-50%) scaleX(0.3); font-size: 150px; right: -40px;">]</span>
+                </span>
+            
+                <span style="display: inline-block; vertical-align: middle; position: relative;">
+                  <span style="position: absolute; top: 50%; transform: translateY(-50%) scaleX(0.3); font-size: 150px; left: -40px;">[</span>
+                  <table style="display: inline-block; vertical-align: middle; border-collapse: collapse; margin: 0 20px;">
+                    <tr style="border: none;"><td style="border: none;">a<sup>(0)</sup><sub>0</sub></td></tr>
+                    <tr style="border: none;"><td style="border: none;">a<sup>(0)</sup><sub>1</sub></td></tr>
+                    <tr style="border: none;"><td style="border: none;">⋮</td></tr>
+                    <tr style="border: none;"><td style="border: none;">a<sup>(0)</sup><sub>n</sub></td></tr>
+                  </table>
+                  <span style="position: absolute; top: 50%; transform: translateY(-50%) scaleX(0.3); font-size: 150px; right: -40px;">]</span>
+                </span>
+            
+                <span style="margin: 0 8px;"> + </span>
+            
+                <span style="display: inline-block; vertical-align: middle; position: relative;">
+                  <span style="position: absolute; top: 50%; transform: translateY(-50%) scaleX(0.3); font-size: 150px; left: -40px;">[</span>
+                  <table style="display: inline-block; vertical-align: middle; border-collapse: collapse; color: deepskyblue; margin: 0 20px;">
+                    <tr style="border: none;"><td style="border: none;">b<sub>0</sub><sup>(1)</sup></td></tr>
+                    <tr style="border: none;"><td style="border: none;">b<sub>1</sub><sup>(1)</sup></td></tr>
+                    <tr style="border: none;"><td style="border: none;">⋮</td></tr>
+                    <tr style="border: none;"><td style="border: none;">b<sub>n</sub><sup>(1)</sup></td></tr>
+                  </table>
+                  <span style="position: absolute; top: 50%; transform: translateY(-50%) scaleX(0.3); font-size: 150px; right: -40px;">]</span>
+                </span>
+            
+                <span class="secondary-text" style="font-size: 32px; line-height: 1.2;">)</span>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>Activation</h4>
+            <div>
+              <div style="font-size: 0.65em;">
+                a<sup>(1)</sup> = <span class="secondary-text">σ( </span><span class="primary-text">W<sup>(1,0)</sup></span
+                >a<sup>(0)</sup> + <span style="color:deepskyblue;">b<sup>(1)</sup></span>
+                <span class="secondary-text">)</span>
+              </div>
+              <br>
+              <div class="fragment" style="font-size: 0.65em;">
+                a<sup>(2)</sup> = <span class="secondary-text">σ( </span><span class="primary-text">W<sup>(2,1)</sup></span
+                  >a<sup>(1)</sup> + <span style="color:deepskyblue;">b<sup>(2)</sup></span>
+                  <span class="secondary-text">)</span>
+              </div>
+              <br>
+              <div class="fragment" style="font-size: 0.65em;">
+                a<sup>(3)</sup> = <span class="secondary-text">σ( </span><span class="primary-text">W<sup>(3,2)</sup></span
+                  >a<sup>(2)</sup> + <span style="color:deepskyblue;">b<sup>(3)</sup></span>
+                  <span class="secondary-text">)</span>
+              </div>
+              <br>
+              <br>
+              <div class="fragment">
+                a<sup>(3)</sup> = <span class="secondary-text">σ( </span><span class="primary-text">W<sup>(3,2)</sup></span
+                  ><span class="secondary-text">σ( </span><span class="primary-text">W<sup>(2,1)</sup></span
+                    ><span class="secondary-text">σ( </span><span class="primary-text">W<sup>(1,0)</sup></span
+                      >a<sup>(0)</sup> + <span style="color:deepskyblue;">b<sup>(1)</sup></span>
+                      <span class="secondary-text">)</span> + <span style="color:deepskyblue;">b<sup>(2)</sup></span>
+                    <span class="secondary-text">)</span> + <span style="color:deepskyblue;">b<sup>(3)</sup></span>
+                  <span class="secondary-text">)</span>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>Just a function...</h4>
+            <div class="r-hstack" style="gap: 2rem">
+              <figure>
+                <img height="200" src="imgs/weights-3.png" data-preview-image />
+              </figure>
+              <div style="display: flex; align-items: center; justify-content: center">
+                <div>
+                  <span style="margin-right: 10px;">ƒ(a<sub>0</sub>, ..., a<sub>783</sub>) = </span>
+                </div>
+                <div style="display: flex; align-items: center;">
+                  <div style="
+                    border-left: 2px solid white;
+                    border-right: 2px solid white;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    margin-left: 5px;
+                    height: 180px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                  ">
+                    <div style="margin: 5px 0;">y<sub>0</sub></div>
+                    <div style="margin: 5px 0;">⋮</div>
+                    <div style="margin: 5px 0;">y<sub>9</sub></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>...with many parameters</h4>
+            <br>
+            <small>
+            <ul> 
+              <li><span style="color: #fff;"">(784 x 16) + (16 x 16) + (16 x 10) = <span class="primary-text">12.960 weights</span></span></li>
+              <li><span style="color: #fff;"">16 + 16 + 10 = <span class="primary-text">42 biases</span></span></li>
+            </ul>
+            </small>
+            <br>
+            <p class="secondary-text"><u>13.002</u></p>
+          </section>
+          <section>
+            <h4>Doubts or thoughts?</h4>
+            <figure>
+              <img height="300" src="imgs/alan.gif" data-preview-image />
+            </figure>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h4>Doubts or thoughts?</h4>
+            <figure>
+              <img height="300" src="imgs/pinky.gif" data-preview-image />
+            </figure>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h4>Doubts or thoughts?</h4>
+            <figure>
+              <img height="300" src="imgs/neo.gif" data-preview-image />
+            </figure>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h4>Thank you!</h4>
+            <figure>
+              <img height="300" src="imgs/simpsons-universe.gif" data-preview-image />
+            </figure>
+          </section>
+        </section>
+      </div>
+    </div>
+
+    <script src="reveal/dist/reveal.js"></script>
+    <script src="reveal/plugin/zoom/zoom.js"></script>
+    <script src="reveal/plugin/notes/notes.js"></script>
+    <script src="reveal/plugin/search/search.js"></script>
+    <script src="reveal/plugin/markdown/markdown.js"></script>
+    <script src="reveal/plugin/highlight/highlight.js"></script>
+
+    <script>
+      // Also available as an ES module, see:
+      // https://revealjs.com/initialization/
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        center: true,
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [
+          RevealZoom,
+          RevealNotes,
+          RevealSearch,
+          RevealMarkdown,
+          RevealHighlight,
+        ],
+      })
+    </script>
+  </body>
+</html>
