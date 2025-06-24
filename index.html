@@ -910,6 +910,33 @@
             <p class="secondary-text"><u>13.002</u></p>
           </section>
           <section>
+            <h4>Recap</h4>
+            <div class="r-hstack">
+              <ul>
+                <li class="fragment">
+                  <small style="color: #fff">
+                    Neurons are wired together by weights, each neuron is connected to all the neurons in the previous layer and all the neurons in the next layer.
+                  </small>
+                </li>
+                <li class="fragment">
+                  <small style="color: #fff">
+                    Neurons activation values are defined by the previous layer's neurons and the weights that connect them, plus a bias.
+                  </small>
+                </li>
+                <li class="fragment">
+                  <small style="color: #fff">
+                    A neural network is a just a function, an overly complex one with many parameters. Weights (and biases) are the parameters of the function, its dials and knobs.
+                  </small>
+                </li>
+                <li class="fragment">
+                  <small style="color: #fff">
+                    The model implemented by a neural network is made of the huge amount of parameters and the matrix operations that are performed to calculate the function output.
+                  </small>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section>
             <h4>Doubts or thoughts?</h4>
             <figure>
               <img height="300" src="imgs/alan.gif" data-preview-image />
@@ -919,6 +946,207 @@
 
         <section>
           <section>
+            <h4>Functions</h4>
+            <figure>
+              <img height="300" src="imgs/mnist-dataset.png" data-preview-image />
+            </figure>
+            <br>
+            <a href="https://en.wikipedia.org/wiki/MNIST_database" target="_blank"><u>MNIST dataset</u></a>
+          </section>
+          <section>
+            <h4>Test and train</h4>
+            <figure>
+              <img height="450" src="imgs/test-train-0.png" data-preview-image />
+            </figure>
+          </section>
+          <section>
+            <h4>Test and train</h4>
+            <div class="r-hstack" style="gap: 10rem">
+              <figure>
+                <img height="200" src="imgs/six-hw-0.png" data-preview-image />
+              </figure>
+              <figure class="fragment">
+                <img height="550" src="imgs/test-train-1.png" data-preview-image />
+              </figure>
+              <figure class="fragment">
+                <img height="550" src="imgs/test-train-2.png" data-preview-image />
+              </figure>
+            </div>
+          </section>
+          <section>
+            <h4>Cost</h4>
+            <div class="r-hstack" style="gap: 4rem; align-items: flex-start;">
+              <div class="r-vstack fragment" style="align-items: flex-start;">
+                <figure>
+                  <img height="500" src="imgs/test-train-2.png" data-preview-image />
+                </figure>
+                <span style="color: red;">✕</span>
+              </div>
+              <div class="r-vstack fragment" style="align-items: flex-start;">
+                <figure>
+                  <img height="500" src="imgs/test-train-1.png" data-preview-image />
+                </figure>
+                <span style="color: green;">✓</span>
+              </div>
+              <div class="r-vstack fragment" style="font-size: 0.75em; align-items: flex-start; margin-top: 25px;">
+                <span>(0.22 - 0.00)<sup>2</sup> +</span>
+                <span>(0.86 - 0.00)<sup>2</sup> +</span>
+                <span>(0.38 - 0.00)<sup>2</sup> +</span>
+                <span>(0.92 - 0.00)<sup>2</sup> +</span>
+                <span>(0.75 - 0.00)<sup>2</sup> +</span>
+                <span>(0.12 - 0.00)<sup>2</sup> +</span>
+                <span>(0.66 - 1.00)<sup>2</sup> +</span>
+                <span>(0.88 - 0.00)<sup>2</sup> +</span>
+                <span>(0.43 - 0.00)<sup>2</sup> +</span>
+                <span>(0.15 - 0.00)<sup>2</sup></span>
+                <span class="primary-text" style="margin-top: 50px;">Single sample cost</span>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>Cost</h4>
+            <div class="r-hstack" style="gap: 8rem; align-items: flex-start;">
+              <div class="r-vstack" style="font-size: 0.75em; align-items: flex-start; margin-top: 25px;">
+                <span>(0.22 - 0.00)<sup>2</sup> = <span class="primary-text">0.0484</span></span>
+                <span>(0.86 - 0.00)<sup>2</sup> = <span class="primary-text">0.7396</span></span>
+                <span>(0.38 - 0.00)<sup>2</sup> = <span class="primary-text">0.1444</span></span>
+                <span>(0.92 - 0.00)<sup>2</sup> = <span class="primary-text">0.8464</span></span>
+                <span>(0.75 - 0.00)<sup>2</sup> = <span class="primary-text">0.5625</span></span>
+                <span>(0.12 - 0.00)<sup>2</sup> = <span class="primary-text">0.0144</span></span>
+                <span>(0.66 - 1.00)<sup>2</sup> = <span class="primary-text">0.1156</span></span>
+                <span>(0.88 - 0.00)<sup>2</sup> = <span class="primary-text">0.7744</span></span>
+                <span>(0.43 - 0.00)<sup>2</sup> = <span class="primary-text">0.1849</span></span>
+                <span>(0.15 - 0.00)<sup>2</sup> = <span class="primary-text">0.0225</span></span>
+              </div>
+              <div class="r-vstack" style="font-size: 0.75em; align-items: flex-start; margin-top: 25px;">
+                <span>0.0484 +</span>
+                <span>0.7396 +</span>
+                <span>0.1444 +</span>
+                <span>0.8464 +</span>
+                <span>0.5625 +</span>
+                <span>0.0144 +</span>
+                <span>0.1156 +</span>
+                <span>0.7744 +</span>
+                <span>0.1849 +</span>
+                <span>0.0225 = <span class="primary-text">3.5387</span></span>
+                <span class="primary-text" style="margin-top: 35px;">Single sample cost</span>
+              </div>
+            </div>
+            <aside class="notes">
+              To assess how well the network is performing overall, 
+              we compute the average of this cost across all the training examples — tens of thousands of them. 
+              That average tells us how far off the network is, on the whole.
+            </aside>
+          </section>
+          <section>
+            <h4>Functions</h4>
+            <div class="r-hstack" style="gap: 1rem">
+              <div style="text-align: left; font-size: 0.75em;">
+                <p class="primary-text">Neural Network Function</p>
+                <small>Input: 784 numbers (pixels values)</small>
+                <small>Parameters: 13.002 numbers (weights and biases)</small>
+                <small>Output: 10 numbers (digits)</small>
+              </div>
+              <div class="fragment" style="text-align: left; font-size: 0.75em;">
+                <p class="primary-text">Cost Function</p>
+                <small>Input: 13.002 numbers (weights and biases)</small>
+                <small>Parameters: tens of thousands of training samples (pixels values)</small>
+                <small>Output: 1 number <span class="primary-text">(cost)</span></small>
+              </div>
+            </div>
+            <aside class="notes">
+              The cost function is a function that takes the network's parameters and returns a single number.
+              It's a measure of how well the network is performing.
+              The goal is to find the parameters that minimize the cost function.
+            </aside>
+          </section>
+          <section>
+            <h4>Function minima</h4>
+            <div class="r-hstack" style="gap: 4rem">
+              <figure>
+                <img height="500" src="imgs/min-function-0.png" data-preview-image />
+              </figure>
+              <span class="secondary-text">C(w)</span>
+            </div>
+            <aside class="notes">
+              How can you find an input that minimizes a function? 
+              In simple cases, calculus can help you find the exact minimum, 
+              but for complex functions—like the cost function of a neural network with 13,000 inputs—that’s often not practical
+            </aside>
+          </section>
+          <section>
+            <h4>Function minima</h4>
+            <div class="r-hstack" style="gap: 4rem">
+              <figure>
+                <img height="500" src="imgs/min-function-1.png" data-preview-image />
+              </figure>
+              <span class="secondary-text">C(w)</span>
+            </div>
+            <aside class="notes">
+              A more general approach is to pick a starting point and move in the direction that reduces the function’s value. 
+              If you can estimate the slope at your current position, move left when the slope is positive and right when it’s negative. 
+              Repeating this process—constantly updating your position based on the slope—will guide you toward a local minimum. 
+              It’s like a ball rolling downhill. 
+              A negative gradient indicates the direction of steepest decrease for a function. 
+              It points in the direction where the function's value is decreasing most rapidly
+            </aside>
+          </section>
+          <section>
+            <h4>Function minima</h4>
+            <div class="r-hstack" style="gap: 4rem">
+              <figure>
+                <img height="500" src="imgs/min-function-2.png" data-preview-image />
+              </figure>
+              <span class="secondary-text">C(w)</span>
+            </div>
+            <aside class="notes">
+              But even with this simple strategy, the specific minimum you reach depends heavily on where you start, 
+              and there’s no guarantee it’ll be the lowest possible one.
+            </aside>
+          </section>
+          <section>
+            <h4>Gradient descent</h4>
+            <div class="r-hstack" style="gap: 4rem">
+              <figure>
+                <img height="500" src="imgs/gradient-descent-3d.gif" data-preview-image />
+              </figure>
+              <span class="secondary-text">-&nabla; C(w)</span>
+            </div>
+            <aside class="notes">
+              When we say a network is learning, we mean it’s minimizing a cost function.
+              The algorithm that efficiently computes this gradient and forms the core of how a neural network learns is known as backpropagation.
+            </aside>
+          </section>
+          <section>
+            <h4>Recap</h4>
+            <div class="r-hstack">
+              <ul>
+                <li class="fragment">
+                  <small style="color: #fff">
+                    A neural network is a function with many parameters (weights and biases) 
+                    wheras in the cost function weights and biases are the inputs and the parameters are the training samples.
+                  </small>
+                </li>
+                <li class="fragment">
+                  <small style="color: #fff">
+                    The cost function is a function that takes the network's parameters as inputs and returns a single number, the cost.
+                    The lower the cost, the better the network is performing.
+                  </small>
+                </li>
+                <li class="fragment">
+                  <small style="color: #fff">
+                    The gradient descent algorithm is a way to find the parameters that minimize the cost function.
+                  </small>
+                </li>
+                <li class="fragment">
+                  <small style="color: #fff">
+                    The algorithm that efficiently computes this gradient and forms the core of how a neural network learns is known as backpropagation.
+                  </small>
+                </li>
+              </ul>
+            </div>
+          </section>
+          <section>
             <h4>Doubts or thoughts?</h4>
             <figure>
               <img height="300" src="imgs/pinky.gif" data-preview-image />
@@ -927,6 +1155,10 @@
         </section>
 
         <section>
+          <section>
+            <h4>Recap</h4>
+            TBD
+          </section>
           <section>
             <h4>Doubts or thoughts?</h4>
             <figure>
@@ -941,6 +1173,7 @@
             <figure>
               <img height="300" src="imgs/simpsons-universe.gif" data-preview-image />
             </figure>
+            thanks to 1green 3blue
           </section>
         </section>
       </div>
