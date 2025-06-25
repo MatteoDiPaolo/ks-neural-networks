@@ -153,11 +153,7 @@
               processes it, and transmits an output to other neurons. These
               connections have associated weights, which represent the strength
               of the connection. During training, the network adjusts these
-              weights to improve its performance. are composed of interconnected
-              nodes (neurons) organized in layers. Each neuron receives input,
-              processes it, and transmits an output to other neurons. These
-              connections have associated weights, which represent the strength
-              of the connection.
+              weights to improve its performance.
               <br />
               Having a brain is not enough, you need to train it. Imagine the
               brain of a newborn baby. It's a blank slate, but it's not very
@@ -966,10 +962,10 @@
                 <img height="200" src="imgs/six-hw-0.png" data-preview-image />
               </figure>
               <figure class="fragment">
-                <img height="550" src="imgs/test-train-1.png" data-preview-image />
+                <img height="600" src="imgs/test-train-1.png" data-preview-image />
               </figure>
               <figure class="fragment">
-                <img height="550" src="imgs/test-train-2.png" data-preview-image />
+                <img height="600" src="imgs/test-train-2.png" data-preview-image />
               </figure>
             </div>
           </section>
@@ -1155,6 +1151,90 @@
         </section>
 
         <section>
+          <section>
+            <h4>Backpropagation</h4>
+            <div class="r-hstack" style="gap: 10rem">
+              <figure>
+                <img height="200" src="imgs/six-hw-0.png" data-preview-image />
+              </figure>
+              <figure>
+                <img height="600" src="imgs/backpropagation-0.png" data-preview-image />
+              </figure>
+            </div>
+            <aside class="notes">
+              The magnitude of these nudges should be proportional to how far away each current value is from its target value.
+            </aside>
+          </section>
+          <section>
+            <h4>Backpropagation</h4>
+            <div class="r-hstack">
+              <figure>
+                <img height="600" src="imgs/backpropagation-1.png" data-preview-image />
+              </figure>
+              <div class="r-vstack" style="text-align: left; font-size: 0.7em; align-items: flex-start;">
+                <div>
+                  0.66 = <span class="secondary-text">σ( </span><span class="primary-text">w<sub>1</sub></span
+                  >a<sub>1</sub> + ... +
+                    <span class="primary-text">w<sub>n</sub></span
+                    >a<sub>n</sub> + <span  style="color:deepskyblue;">b</span>
+                  <span class="secondary-text">)</span>
+                </div>
+                <div class="fragment" style="margin-top: 40px; font-size: 0.65em;">
+                  <ol>
+                    <li style="color: #fff;">
+                     <span>Increase the bias: <span style="color:deepskyblue;">b</span></span>
+                    </li>
+                    <li style="color: #fff;">
+                      <span>Increase the weights: <span class="primary-text">w<sub>i</sub></span></span>
+                    </li>
+                    <li style="color: #fff;">
+                      <span>Increase the activation of previous layer: a<sub>i</sub></span>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>Keep propagating</h4>
+            <div class="r-hstack">
+              <figure>
+                <img height="600" src="imgs/backpropagation-2.png" data-preview-image />
+              </figure>
+              <div class="r-vstack" style="text-align: left; font-size: 0.7em; align-items: flex-start;">
+                <div>
+                  a = <span class="secondary-text">σ( </span><span class="primary-text">w<sub>1</sub></span
+                  >a<sub>1</sub> + ... +
+                    <span class="primary-text">w<sub>n</sub></span
+                    >a<sub>n</sub> + <span  style="color:deepskyblue;">b</span>
+                  <span class="secondary-text">)</span>
+                </div>
+                <div style="margin-top: 40px; font-size: 0.65em;">
+                  <ol>
+                    <li style="color: #fff;">
+                     <span>Increase the bias - <span style="color:deepskyblue;">b</span></span>
+                    </li>
+                    <li style="color: #fff;">
+                      <span>Increase the weights - <span class="primary-text">w<sub>i</sub></span></span>
+                    </li>
+                    <li style="color: #fff;">
+                      <span>Keep propagating</span>
+                    </li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>Tweak knobs and dials</h4>
+            <figure>
+              <img height="500" src="imgs/backpropagation-table.png" data-preview-image />
+            </figure>
+          </section>
+          <section>
+            <h4>NN types history</h4>
+            TBD
+          </section>
           <section>
             <h4>Recap</h4>
             TBD
